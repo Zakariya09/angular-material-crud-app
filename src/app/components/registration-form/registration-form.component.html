@@ -1,0 +1,231 @@
+
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title class="text-center">
+    {{ isEdit ? "Update" : "Register" }} Student
+  </h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="row mb-2">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter first name"
+          formControlName="firstName"
+        />
+        <mat-error
+          *ngIf="
+            f.firstName.invalid &&
+            (f.firstName.dirty || f.firstName.touched)
+          "
+        >
+          <span *ngIf="f.firstName.errors">
+            <span *ngIf="f.firstName.errors.required">
+              First Name is <strong>required</strong>
+            </span>
+            <span *ngIf="f.firstName.errors.pattern"
+              >Please enter only <strong>alphabets</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Middle Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter middle name"
+          formControlName="middleName"
+        />
+        <mat-error
+          *ngIf="
+            f.middleName.invalid &&
+            (f.middleName.dirty || f.middleName.touched)
+          "
+        >
+          <span *ngIf="f.middleName.errors">
+            <span *ngIf="f.middleName.errors.required">
+              Middle Name is <strong>required</strong>
+            </span>
+            <span *ngIf="f.middleName.errors.pattern"
+              >Please enter only <strong>alphabets</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter last name"
+          formControlName="lastName"
+        />
+        <mat-error
+          *ngIf="
+            f.lastName.invalid &&
+            (f.lastName.dirty || f.lastName.touched)
+          "
+        >
+          <span *ngIf="f.lastName.errors">
+            <span *ngIf="f.lastName.errors.required">
+              Last Name is <strong>required</strong>
+            </span>
+            <span *ngIf="f.lastName.errors.pattern"
+              >Please enter only <strong>alphabets</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Enter email Id"
+          formControlName="email"
+        />
+        <mat-error
+          *ngIf="
+            f.email.invalid &&
+            (f.email.dirty || f.email.touched)
+          "
+        >
+          <span *ngIf="f.email.errors">
+            <span *ngIf="f.email.errors.required">
+              Email is <strong>required</strong>
+            </span>
+            <span *ngIf="f.email.errors.email || f.email.errors.pattern">
+             Please enter valid email address
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col">
+<mat-form-field appearance="fill">
+  <mat-label>Select Gender</mat-label>
+  <mat-select formControlName="gender">
+    <mat-option *ngFor="let gender of types" [value]="gender.value">
+      {{gender.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+      </div>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Contact Number</mat-label>
+        <input
+          matInput
+          placeholder="Enter contact number"
+          formControlName="contactNo"
+        />
+        <mat-error
+          *ngIf="
+            f.contactNo.invalid &&
+            (f.contactNo.dirty || f.contactNo.touched)
+          "
+        >
+          <span *ngIf="f.contactNo.errors">
+            <span *ngIf="f.contactNo.errors.required">
+              Conatct Number is <strong>required</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Mother Toungue</mat-label>
+        <input
+          matInput
+          placeholder="Enter mother toungue"
+          formControlName="motherToungue"
+        />
+        <mat-error
+          *ngIf="
+            f.motherToungue.invalid &&
+            (f.motherToungue.dirty || f.motherToungue.touched)
+          "
+        >
+          <span *ngIf="f.motherToungue.errors">
+            <span *ngIf="f.motherToungue.errors.required">
+              Mother Toungue is <strong>required</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Religion</mat-label>
+        <input
+          matInput
+          placeholder="Enter religion"
+          formControlName="religion"
+        />
+        <mat-error
+          *ngIf="
+            f.religion.invalid &&
+            (f.religion.dirty || f.religion.touched)
+          "
+        >
+          <span *ngIf="f.religion.errors">
+            <span *ngIf="f.religion.errors.required">
+              Religion is <strong>required</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Father Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter father name"
+          formControlName="fatherName"
+        />
+        <mat-error
+          *ngIf="
+            f.fatherName.invalid &&
+            (f.fatherName.dirty || f.fatherName.touched)
+          "
+        >
+          <span *ngIf="f.fatherName.errors">
+            <span *ngIf="f.fatherName.errors.required">
+              Father Name is <strong>required</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Annual Income</mat-label>
+        <input
+          matInput
+          placeholder="Enter annual income in Lac"
+          formControlName="annualIncome"
+        />
+        <mat-error
+          *ngIf="
+            f.annualIncome.invalid &&
+            (f.annualIncome.dirty || f.annualIncome.touched)
+          "
+        >
+          <span *ngIf="f.annualIncome.errors">
+            <span *ngIf="f.annualIncome.errors.required">
+              Annual Income is <strong>required</strong>
+            </span>
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-raised-button mat-dialog-close>Cancel</button>
+    <button
+      [disabled]="studentForm.invalid"
+      mat-button
+      mat-raised-button
+      color="primary"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>
+</form>

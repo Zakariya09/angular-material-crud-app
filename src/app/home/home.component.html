@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row justify-content-end">
+    <button
+    class="mt-1"
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="openAddContactForm()"
+    >
+    Add Student
+  </button>
+  </div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-2" *ngIf="dataSource else dataNotFound">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName + '' + element.middleName + '' + element.lastName }} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="dob">
+    <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
+    <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button >Edit</button>
+      <button mat-raised-button >Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
+
+
+
+
+<ng-template #dataNotFound>
+  <div class="jumbotron bg-white text-center mt-5">
+    <h1 class="display-4">DATA</h1>
+    <p class="lead">NOT FOUND</p>
+    <hr class="my-4" />
+
+  </div>
+</ng-template>
+<button
+mat-fab
+color="primary"
+class="add-contact-btn"
+matTooltip="Add Contact"
+matTooltipPosition="above"
+(click)="openAddContactForm()"
+>
+<mat-icon>+</mat-icon>
+</button>
